@@ -123,6 +123,19 @@ test('delivery test case 9. is not Rush,and delivery include ME. ', t => {
 
     t.is(result, 5);
 });
+test('delivery test case 10. is not Rush,and delivery include NH. ', t => {
+    const anOrder = {
+        "deliveryState": 'NH',
+        "placedOn": {
+            "plusDays": function (plusDays) {
+                return plusDays;
+            }
+        }
+    }
+    const result = deliveryDate(anOrder, false);
+
+    t.is(result, 5);
+});
 
 
 
