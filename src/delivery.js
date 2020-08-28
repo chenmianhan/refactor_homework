@@ -1,14 +1,18 @@
+function isDeliveryStateIncludesStates(anOrder, states) {
+  return states.includes(anOrder.deliveryState);
+}
+
 function getPlusDaysWhenRush(anOrder) {
   let deliveryTime;
-  if ([
+  if (isDeliveryStateIncludesStates(anOrder, [
     'MA',
     'CT',
-  ].includes(anOrder.deliveryState)) {
+  ])) {
     deliveryTime = 1;
-  } else if ([
+  } else if (isDeliveryStateIncludesStates(anOrder, [
     'NY',
     'NH',
-  ].includes(anOrder.deliveryState)) {
+  ])) {
     deliveryTime = 2;
   } else {
     deliveryTime = 3;
@@ -18,22 +22,23 @@ function getPlusDaysWhenRush(anOrder) {
 
 function getPlusDaysWhenIsNoRush(anOrder) {
   let deliveryTime;
-  if ([
+  if (isDeliveryStateIncludesStates(anOrder, [
     'MA',
     'CT',
     'NY',
-  ].includes(anOrder.deliveryState)) {
+  ])) {
     deliveryTime = 2;
-  } else if ([
+  } else if (isDeliveryStateIncludesStates(anOrder, [
     'ME',
     'NH',
-  ].includes(anOrder.deliveryState)) {
+  ])) {
     deliveryTime = 3;
   } else {
     deliveryTime = 4;
   }
   return 2 + deliveryTime;
 }
+
 
 function deliveryDate(anOrder) {
   let plusDays = anOrder.isRush ? getPlusDaysWhenRush(anOrder) : getPlusDaysWhenIsNoRush(anOrder);
