@@ -35,8 +35,8 @@ function getPlusDaysWhenIsNoRush(anOrder) {
   return anOrder.placedOn.plusDays(2 + deliveryTime);
 }
 
-function deliveryDate(anOrder, isRush) {
-  if (isRush) {
+function deliveryDate(anOrder) {
+  if (anOrder.isRush) {
     return getPlusDaysWhenRush(anOrder);
   } else {
     return getPlusDaysWhenIsNoRush(anOrder);
