@@ -410,3 +410,54 @@ test('Should return B when rating given west-indies voyage length 8 and 3 histor
   const result = rating(voyage, history)
   t.is(result, 'B')
 });
+test('test rating and result is A', t => {
+  const voyage = {
+    zone: 'china',
+    length: 4,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 8,
+    },
+  ];
+
+  const result = rating(voyage, history);
+  const expectResult = 'A';
+  t.is(result, expectResult);
+});
