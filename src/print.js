@@ -6,12 +6,15 @@ function calculateOutStanding(invoice) {
     return outstanding;
 }
 
+function getDueDate(invoice) {
+    const today = new Date();
+    invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+}
+
 function printOwing(invoice) {
     let result = `***********************\n**** Customer Owes ****\n***********************\n`
     let outstanding = calculateOutStanding(invoice);
-
-    const today = new Date();
-    invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+    getDueDate(invoice);
     result += `name: ${invoice.customer}\n`;
     result += `amount: ${outstanding}\n`;
     result += `amount: ${invoice.dueDate.toLocaleDateString()}`;
