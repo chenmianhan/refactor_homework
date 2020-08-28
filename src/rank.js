@@ -36,12 +36,20 @@ function captainHistoryRisk(voyage, history) {
   return Math.max(result, 0);
 }
 
-function getResultWhenRelatedToChina(result, history, voyage) {
-  result += 3;
+function getResultWhenRelatedToChina(history, voyage) {
+  let result = 3;
   if (history.length > 10) {
     result += 1;
   }
   if (voyage.length > 12 && voyage.length <= 18) {
+    result += 1;
+  }
+  return result;
+}
+
+function getResultWhenNoRelatedToChina(history, voyage) {
+  let result = 0;
+  if (history.length > 8 && voyage.length < 14) {
     result += 1;
   }
   return result;
@@ -52,16 +60,7 @@ function voyageProfitFactor(voyage, history) {
   if (voyage.zone in zoneList) {
     result += 1;
   }
-  if (hasRelationWithChina(voyage, history)) {
-    result = getResultWhenRelatedToChina(result, history, voyage);
-  } else {
-    if (history.length > 8) {
-      result += 1;
-    }
-    if (voyage.length > 14) {
-      result -= 1;
-    }
-  }
+  result += hasRelationWithChina(voyage, history) ? getResultWhenRelatedToChina(history, voyage) : result = getResultWhenNoRelatedToChina(history, voyage);
   return result;
 }
 
