@@ -57,3 +57,18 @@ test('delivery test case 1. is Rush,and delivery include NH. ', t => {
 
     t.is(result, 3);
 });
+test('delivery test case 1. is Rush,and delivery contains none key word. ', t => {
+    const anOrder = {
+        "deliveryState": '',
+        "placedOn": {
+            "plusDays": function (plusDays) {
+                return plusDays;
+            }
+        }
+    }
+
+    const result = deliveryDate(anOrder, true);
+
+    t.is(result, 4);
+});
+
