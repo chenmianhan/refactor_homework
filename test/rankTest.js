@@ -166,3 +166,48 @@ test('Should return 3 when calculate voyageProfitFactor given voyage zone is eas
   const result = voyageProfitFactor(voyage, history)
   t.is(result, 3)
 });
+test('Should return 2 when calculate voyageProfitFactor given voyage zone is china and length is 18 and history has china and length is 10 ', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 18,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }
+  ];
+  const result = voyageProfitFactor(voyage, history)
+  t.is(result, 2)
+});
