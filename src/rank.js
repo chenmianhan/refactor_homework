@@ -64,11 +64,15 @@ function voyageProfitFactor(voyage, history) {
   return result;
 }
 
-function rating (voyage, history) {
+function calculateRating(vpf, vr, chr) {
+  return vpf * 3 > (vr + chr * 2);
+}
+
+function rating(voyage, history) {
   const vpf = voyageProfitFactor(voyage, history);
   const vr = voyageRisk(voyage);
   const chr = captainHistoryRisk(voyage, history);
-  if (vpf * 3 > (vr + chr * 2)) {
+  if (calculateRating(vpf, vr, chr)) {
     return 'A';
   } else {
     return 'B';
