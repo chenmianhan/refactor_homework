@@ -309,3 +309,83 @@ test('Should return 3 when calculate voyageProfitFactor given voyage zone is chi
   const result = voyageProfitFactor(voyage, history)
   t.is(result, 3)
 });
+test('Should return 2 when calculate voyageProfitFactor given voyage zone is not china and length is 14 and history has none china and length is 8 ', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 14,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-china',
+      profit: 15,
+    }, {
+      zone: 'east-indies',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'east-indies',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    }
+  ];
+  const result = voyageProfitFactor(voyage, history)
+  t.is(result, 2)
+});
+test('Should return 2 when calculate voyageProfitFactor given voyage zone is not china and length is 15 and history has none china and length is 9 ', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 15,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-china',
+      profit: 15,
+    }, {
+      zone: 'east-indies',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'east-indies',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    }
+  ];
+  const result = voyageProfitFactor(voyage, history)
+  t.is(result, 2)
+});
