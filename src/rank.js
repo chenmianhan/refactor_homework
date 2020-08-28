@@ -6,10 +6,11 @@ function voyageRisk (voyage) {
   if (voyage.length > 8) {
     result += voyage.length - 8;
   }
-  if ([
+  const zoneList = [
     'china',
     'east-indies',
-  ].includes(voyage.zone)) {
+  ];
+  if (zoneList.includes(voyage.zone)) {
     result += 4;
   }
   return Math.max(result, 0);
