@@ -39,7 +39,7 @@ function voyageProfitFactor (voyage, history) {
   if (voyage.zone === 'east-indies') {
     result += 1;
   }
-  if (voyage.zone === 'china' && hasChina(history)) {
+  if (hasRelationWithChina()) {
     result += 3;
     if (history.length > 10) {
       result += 1;
