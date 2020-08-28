@@ -15,7 +15,11 @@ class Employee {
     }
   }
 
-  toString () {
+  toString() {
     return `${this._name} (${this._type})`;
   }
+
 }
+
+exports.Employee = Employee
+
