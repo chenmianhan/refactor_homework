@@ -45,7 +45,7 @@ test('Should return false when judge hasChina given history has none item zone i
   const result = hasChina(history)
   t.is(result, false)
 });
-test('Should return false when calculate captainHistoryRisk given history length less than 5 and has 3 history profit small than 0 and zone is not china and has china ,', t => {
+test('Should return 8 when calculate captainHistoryRisk given history length less than 5 and has 3 history profit small than 0 and zone is not china and has china ,', t => {
   const history = [
     {
       zone: 'east-indies',
@@ -68,4 +68,32 @@ test('Should return false when calculate captainHistoryRisk given history length
   };
   const result = captainHistoryRisk(voyage, history)
   t.is(result, 8)
+});
+test('Should return 0 when calculate captainHistoryRisk given history length is 5 and has 0 history profit small than 0 and zone is china and has china ,', t => {
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 1,
+    }, {
+      zone: 'west-indies',
+      profit: 4,
+    }, {
+      zone: 'china',
+      profit: 2,
+    },
+    {
+      zone: 'west-america',
+      profit: 7,
+    },
+    {
+      zone: 'east-america',
+      profit: 1,
+    }
+  ];
+  const voyage = {
+    zone: 'china',
+    length: 10,
+  };
+  const result = captainHistoryRisk(voyage, history)
+  t.is(result, 0)
 });
