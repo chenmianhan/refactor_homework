@@ -68,15 +68,17 @@ function calculateRating(vpf, vr, chr) {
   return vpf * 3 > (vr + chr * 2);
 }
 
-function rating(voyage, history) {
+function getRatingData(voyage, history) {
   const vpf = voyageProfitFactor(voyage, history);
   const vr = voyageRisk(voyage);
   const chr = captainHistoryRisk(voyage, history);
-  if (calculateRating(vpf, vr, chr)) {
-    return 'A';
-  } else {
-    return 'B';
-  }
+  return {vpf, vr, chr};
+}
+
+function rating(voyage, history) {
+  const {vpf, vr, chr} = getRatingData(voyage, history);
+  return calculateRating(vpf, vr, chr) ? 'A' : 'B'
+
 }
 
 module.exports = {
