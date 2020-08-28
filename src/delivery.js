@@ -3,21 +3,7 @@ function isDeliveryStateIncludesStates(anOrder, states) {
 }
 
 function getPlusDaysWhenRush(anOrder) {
-  let deliveryTime;
-  if (isDeliveryStateIncludesStates(anOrder, [
-    'MA',
-    'CT',
-  ])) {
-    deliveryTime = 1;
-  } else if (isDeliveryStateIncludesStates(anOrder, [
-    'NY',
-    'NH',
-  ])) {
-    deliveryTime = 2;
-  } else {
-    deliveryTime = 3;
-  }
-  return 1 + deliveryTime;
+  return 1 + (isDeliveryStateIncludesStates(anOrder, ['MA', 'CT']) ? 1 : isDeliveryStateIncludesStates(anOrder, ['NY', 'NH']) ? 2 : 3);
 }
 
 function getPlusDaysWhenIsNoRush(anOrder) {
