@@ -1,24 +1,25 @@
-function deliveryDate (anOrder, isRush) {
-  if (isRush) {
-    let deliveryTime;
-    if ([
-      'MA',
-      'CT',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 1;
-    }
-    else if ([
-      'NY',
-      'NH',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 2;
-    }
-    else {
-      deliveryTime = 3;
-    }
-    return anOrder.placedOn.plusDays(1 + deliveryTime);
+function getPlusDaysWhenRush(anOrder) {
+  let deliveryTime;
+  if ([
+    'MA',
+    'CT',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 1;
+  } else if ([
+    'NY',
+    'NH',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 2;
+  } else {
+    deliveryTime = 3;
   }
-  else {
+  return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
+function deliveryDate(anOrder, isRush) {
+  if (isRush) {
+    return getPlusDaysWhenRush(anOrder);
+  } else {
     let deliveryTime;
     if ([
       'MA',
