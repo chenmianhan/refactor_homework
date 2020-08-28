@@ -15,7 +15,7 @@ test('delivery test case 1. is Rush,and delivery include MA. ', t => {
 
     t.is(result, 2);
 });
-test('delivery test case 1. is Rush,and delivery include CT. ', t => {
+test('delivery test case 2. is Rush,and delivery include CT. ', t => {
     const anOrder = {
         "deliveryState": 'CT',
         "placedOn": {
@@ -29,7 +29,7 @@ test('delivery test case 1. is Rush,and delivery include CT. ', t => {
 
     t.is(result, 2);
 });
-test('delivery test case 1. is Rush,and delivery include NY. ', t => {
+test('delivery test case 3. is Rush,and delivery include NY. ', t => {
     const anOrder = {
         "deliveryState": 'NY',
         "placedOn": {
@@ -43,7 +43,7 @@ test('delivery test case 1. is Rush,and delivery include NY. ', t => {
 
     t.is(result, 3);
 });
-test('delivery test case 1. is Rush,and delivery include NH. ', t => {
+test('delivery test case 4. is Rush,and delivery include NH. ', t => {
     const anOrder = {
         "deliveryState": 'NH',
         "placedOn": {
@@ -57,7 +57,7 @@ test('delivery test case 1. is Rush,and delivery include NH. ', t => {
 
     t.is(result, 3);
 });
-test('delivery test case 1. is Rush,and delivery contains none key word. ', t => {
+test('delivery test case 5. is Rush,and delivery contains none key word. ', t => {
     const anOrder = {
         "deliveryState": '',
         "placedOn": {
@@ -71,4 +71,19 @@ test('delivery test case 1. is Rush,and delivery contains none key word. ', t =>
 
     t.is(result, 4);
 });
+test('delivery test case 6. is not Rush,and delivery include MA. ', t => {
+    const anOrder = {
+        "deliveryState": 'MA',
+        "placedOn": {
+            "plusDays": function (plusDays) {
+                return plusDays;
+            }
+        }
+    }
+    const result = deliveryDate(anOrder, false);
+
+    t.is(result, 4);
+});
+
+
 
