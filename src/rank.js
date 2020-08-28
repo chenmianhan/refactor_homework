@@ -11,17 +11,21 @@ function voyageRisk (voyage) {
   return result;
 }
 
-function hasChina (history) {
+function hasChina(history) {
   return history.some(v => 'china' === v.zone);
 }
 
-function captainHistoryRisk (voyage, history) {
+function hasRelationWithChina(voyage, history) {
+  return voyage.zone === 'china' && hasChina(history);
+}
+
+function captainHistoryRisk(voyage, history) {
   let result = 1;
   if (history.length < 5) {
     result += 4;
   }
   result += history.filter(v => v.profit < 0).length;
-  if (voyage.zone === 'china' && hasChina(history)) {
+  if (hasRelationWithChina(voyage, history)) {
     result -= 2;
   }
   return Math.max(result, 0);
