@@ -1,10 +1,13 @@
-const rankTest = require('ava');
+import {voyageRisk} from "../src/rank";
 
-rankTest('foo', t => {
-  t.pass();
+const test = require('ava');
+test('Should return 5 when calculate voyageRisk given voyage length 0 and zone is china', t => {
+  const voyage = {
+    zone: 'china',
+    length: 0,
+  };
+  const result = voyageRisk(voyage)
+  t.is(result, 5)
 });
 
-rankTest('bar', async t => {
-  const bar = Promise.resolve('bar');
-  t.is(await bar, 'bar');
-});
+
