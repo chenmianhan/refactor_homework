@@ -7,28 +7,12 @@ function getPlusDaysWhenRush(anOrder) {
 }
 
 function getPlusDaysWhenIsNoRush(anOrder) {
-  let deliveryTime;
-  if (isDeliveryStateIncludesStates(anOrder, [
-    'MA',
-    'CT',
-    'NY',
-  ])) {
-    deliveryTime = 2;
-  } else if (isDeliveryStateIncludesStates(anOrder, [
-    'ME',
-    'NH',
-  ])) {
-    deliveryTime = 3;
-  } else {
-    deliveryTime = 4;
-  }
-  return 2 + deliveryTime;
+  return 2 + (isDeliveryStateIncludesStates(anOrder, ['MA', 'CT', 'NY',]) ? 2 : isDeliveryStateIncludesStates(anOrder, ['ME', 'NH']) ? 3 : 4);
 }
 
 
 function deliveryDate(anOrder) {
-  let plusDays = anOrder.isRush ? getPlusDaysWhenRush(anOrder) : getPlusDaysWhenIsNoRush(anOrder);
-  return anOrder.placedOn.plusDays(plusDays);
+  return anOrder.placedOn.plusDays(anOrder.isRush ? getPlusDaysWhenRush(anOrder) : getPlusDaysWhenIsNoRush(anOrder));
 }
 
 module.exports = {
