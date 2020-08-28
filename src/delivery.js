@@ -13,7 +13,7 @@ function getPlusDaysWhenRush(anOrder) {
   } else {
     deliveryTime = 3;
   }
-  return anOrder.placedOn.plusDays(1 + deliveryTime);
+  return 1 + deliveryTime;
 }
 
 function getPlusDaysWhenIsNoRush(anOrder) {
@@ -32,15 +32,12 @@ function getPlusDaysWhenIsNoRush(anOrder) {
   } else {
     deliveryTime = 4;
   }
-  return anOrder.placedOn.plusDays(2 + deliveryTime);
+  return 2 + deliveryTime;
 }
 
 function deliveryDate(anOrder) {
-  if (anOrder.isRush) {
-    return getPlusDaysWhenRush(anOrder);
-  } else {
-    return getPlusDaysWhenIsNoRush(anOrder);
-  }
+  let plusDays = anOrder.isRush ? getPlusDaysWhenRush(anOrder) : getPlusDaysWhenIsNoRush(anOrder);
+  return anOrder.placedOn.plusDays(plusDays);
 }
 
 module.exports = {
