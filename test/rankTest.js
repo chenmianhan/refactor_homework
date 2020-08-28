@@ -35,3 +35,13 @@ test('Should return true when judge hasChina given history has item zone is  chi
   const result = hasChina(history)
   t.is(result, true)
 });
+test('Should return false when judge hasChina given history has none item zone is  china', t => {
+  const history = [
+    {
+      zone: 'west-africa',
+      profit: 7,
+    }
+  ];
+  const result = hasChina(history)
+  t.is(result, false)
+});
