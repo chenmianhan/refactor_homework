@@ -49,7 +49,7 @@ function getResultWhenRelatedToChina(history, voyage) {
 
 function getResultWhenNoRelatedToChina(history, voyage) {
   let result = 0;
-  if (history.length > 8 && voyage.length < 14) {
+  if (history.length > 8 && voyage.length <= 14) {
     result += 1;
   }
   return result;
