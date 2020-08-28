@@ -20,6 +20,5 @@ class Employee {
   }
 
 }
-
 exports.Employee = Employee
 
