@@ -1,4 +1,4 @@
-import {captainHistoryRisk, hasChina, voyageProfitFactor, voyageRisk} from "../src/rank";
+import {captainHistoryRisk, hasChina, rating, voyageProfitFactor, voyageRisk} from "../src/rank";
 
 const test = require('ava');
 test('Should return 5 when calculate voyageRisk given voyage length 0 and zone is china', t => {
@@ -388,4 +388,25 @@ test('Should return 2 when calculate voyageProfitFactor given voyage zone is not
   ];
   const result = voyageProfitFactor(voyage, history)
   t.is(result, 2)
+});
+test('Should return B when rating given west-indies voyage length 8 and 3 history', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 10,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    }
+  ];
+
+  const result = rating(voyage, history)
+  t.is(result, 'B')
 });
