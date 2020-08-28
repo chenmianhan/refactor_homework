@@ -97,6 +97,19 @@ test('delivery test case 7. is not Rush,and delivery include CT. ', t => {
 
     t.is(result, 4);
 });
+test('delivery test case 8. is not Rush,and delivery include NY. ', t => {
+    const anOrder = {
+        "deliveryState": 'NY',
+        "placedOn": {
+            "plusDays": function (plusDays) {
+                return plusDays;
+            }
+        }
+    }
+    const result = deliveryDate(anOrder, false);
+
+    t.is(result, 4);
+});
 
 
 
